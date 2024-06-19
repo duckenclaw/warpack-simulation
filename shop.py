@@ -26,14 +26,17 @@ class Player:
         self.space = 10
         self.items = []
         self.regeneration = 0
+        self.armor = 0
         self.reflect = 0
         self.poison = 0
+        self.empower = 0
         self.received_damage = 0
 
     def add_item(self, item):
         if self.space >= item.space and self.gold >= item.cost:
             if item.effect == "Expand pack":
                 self.space += item.effect_stacks
+                self.gold -= item.cost
                 print(f"Player's space increased by {item.effect_stacks} from {item.name}")
             else:
                 self.items.append(item)
@@ -65,6 +68,9 @@ class Shop:
         self.current_items = random.sample(weighted_items, count)
 
     def sell_items(self, player):
+        # choose_manually = input("Do you want to choose items manually? (yes/no): ").strip().lower() == "yes"
+        choose_manually = False
+
         while player.gold > 0:
             if not self.current_items:
                 self.get_random_items()
@@ -73,12 +79,19 @@ class Shop:
             print("Items available for purchase:")
             for i, item in enumerate(self.current_items, start=1):
                 print(f"{i}. {item.name} GP: {item.cost} S: {item.space}")
-            
-            choice = int(input("Choose an item (1-4) or 0 to skip: ")) - 1
+
+            if choose_manually:
+                choice = int(input("Choose an item (1-4) or 0 to skip: ")) - 1
+            else:
+                choice = random.randint(-1, len(self.current_items)-1)
+                print(f"Randomly choosing item {choice + 1}")
+
             if choice in range(4):
                 selected_item = self.current_items.pop(choice)
                 if not player.add_item(selected_item):
                     print("Not enough space or gold to buy this item.")
+                    self.current_items.insert(choice, selected_item)  # Put the item back if it couldn't be bought
+                
             else:
                 print("Skipping purchase.")
                 self.current_items = []

@@ -232,11 +232,11 @@
         "category": "Effect Item",
         "activation": "On cooldown",
         "effect": "Cleanse Poison",
-        "effect_stacks": 0,
+        "effect_stacks": 2,
         "cooldown": 5,
         "chance": 90,
         "space": 1,
-        "cost": 5,
+        "cost": 4,
         "rarity": "Rare"
     },
     {
@@ -248,7 +248,7 @@
         "cooldown": 0,
         "chance": 60,
         "space": 6,
-        "cost": 8,
+        "cost": 10,
         "rarity": "Legendary"
     },
     {
@@ -256,7 +256,7 @@
         "category": "Melee Weapon",
         "activation": "On cooldown",
         "effect": "Damage",
-        "effect_stacks": 25,
+        "effect_stacks": 20,
         "cooldown": 7,
         "chance": 70,
         "space": 8,
@@ -292,11 +292,47 @@
         "category": "Melee Weapon",
         "activation": "On cooldown",
         "effect": "Damage",
-        "effect_stacks": 12,
+        "effect_stacks": 10,
         "cooldown": 7,
         "chance": 70,
         "space": 4,
-        "cost": 7,
+        "cost": 4,
         "rarity": "Common"
+    },
+    {
+        "name": "Rage Gauntlet",
+        "category": "Effect Item",
+        "activation": "On attack",
+        "effect": "Empower",
+        "effect_stacks": 1,
+        "cooldown": 0,
+        "chance": 85,
+        "space": 2,
+        "cost": 4,
+        "rarity": "Common"
+    },
+    {
+        "name": "Amulet of Fury",
+        "category": "Effect Item",
+        "activation": "On hit",
+        "effect": "Empower",
+        "effect_stacks": 2,
+        "cooldown": 0,
+        "chance": 75,
+        "space": 1,
+        "cost": 7,
+        "rarity": "Rare"
+    },
+    {
+        "name": "Gladiator Helmet",
+        "category": "Effect Item",
+        "activation": "On start",
+        "effect": "Empower",
+        "effect_stacks": 5,
+        "cooldown": 0,
+        "chance": 100,
+        "space": 2,
+        "cost": 10,
+        "rarity": "Legendary"
     }
 ]
