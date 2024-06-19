@@ -203,9 +203,9 @@ if __name__ == "__main__":
         print("Usage: python fight.py <level_player2> <mode> ?<num_simulations>")
         sys.exit(1)
 
-    level_player1 = int(sys.argv[1])
-    level_player2 = int(sys.argv[1])
-    mode = sys.argv[2]
+    level_player1 = int(sys.argv[2])
+    level_player2 = int(sys.argv[2])
+    mode = sys.argv[1]
 
     if mode == "single":
         player1 = Player(level=level_player1)
@@ -221,7 +221,7 @@ if __name__ == "__main__":
         
         simulate_fight(player1, player2)
     elif mode == "simulate":
-        num_simulations=int(sys.argv[3])
+        num_simulations=int(sys.argv[2])
         item_stats = run_simulation(0, 0, num_simulations)
         df = pd.DataFrame(item_stats).T
         df.to_csv(f'item_stats{num_simulations}.csv')
