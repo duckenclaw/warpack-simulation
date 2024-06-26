@@ -68,9 +68,12 @@ def simulate_fight(player1, player2):
                     if item.effect in ["Armor", "Regeneration", "Reflect", "Empower", "Cleanse Poison"]:
                         apply_effect(player1, item.effect, item.effect_stacks)
                         print(f"Player 1 received {item.effect}: {item.effect_stacks} from {item.name}")
-                    elif item.effect in ["Poison", "Damage"]:
+                    elif item.effect in ["Damage"]:
                         apply_effect(player2, item.effect, item.effect_stacks + player1.empower)
                         print(f"Player 2 received {item.effect}: {item.effect_stacks} from {item.name} of Player 1")
+                    elif item.effect in ["Poison"]:
+                        apply_effect(player1, item.effect, item.effect_stacks + player2.empower)
+                        print(f"Player 1 received {item.effect}: {item.effect_stacks} from {item.name} of Player 2")
                 else:
                     print(f"{item.name} of Player 1 failed to work (Roll: {roll} > {item.chance})")
         
@@ -81,8 +84,11 @@ def simulate_fight(player1, player2):
                     if item.effect in ["Armor", "Regeneration", "Reflect", "Empower", "Cleanse Poison"]:
                         apply_effect(player2, item.effect, item.effect_stacks)
                         print(f"Player 2 received {item.effect}: {item.effect_stacks} from {item.name}")
-                    elif item.effect in ["Poison", "Damage"]:
+                    elif item.effect in ["Damage"]:
                         apply_effect(player1, item.effect, item.effect_stacks + player2.empower)
+                        print(f"Player 1 received {item.effect}: {item.effect_stacks} from {item.name} of Player 2")
+                    elif item.effect in ["Poison"]:
+                        apply_effect(player1, item.effect, item.effect_stacks)
                         print(f"Player 1 received {item.effect}: {item.effect_stacks} from {item.name} of Player 2")
                 else:
                     print(f"{item.name} of Player 2 failed to work (Roll: {roll} > {item.chance})")
