@@ -28,6 +28,8 @@ def apply_effect(player, effect, stacks):
 
 def simulate_fight(player1, player2):
     print(f"Fight starts between Player 1 and Player 2")
+    print(player1)
+    print(player2)
 
     time = 0
     while player1.hp > 0 and player2.hp > 0:
@@ -174,7 +176,7 @@ def simulate_fight(player1, player2):
 def run_simulation(level_player1, level_player2, num_simulations=100):
     item_stats = {item.name: {"wins": 0, "losses": 0} for item in item_database}
     for _ in range(num_simulations):
-        levels = random.randint(0, 10)
+        levels = random.randint(0, 20)
         player1 = Player(level=levels)
         player2 = Player(level=levels)
         

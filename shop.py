@@ -2,7 +2,7 @@ import json
 import random
 
 class Item:
-    def __init__(self, name, category, activation, effect, effect_stacks, cooldown, chance, space, cost, rarity):
+    def __init__(self, name, category, activation, effect, effect_stacks, cooldown, chance, width, height, space, cost, rarity):
         self.name = name
         self.category = category
         self.activation = activation
@@ -10,6 +10,8 @@ class Item:
         self.effect_stacks = effect_stacks
         self.cooldown = cooldown
         self.chance = chance
+        self.width = width
+        self.height = height
         self.space = space
         self.cost = cost
         self.rarity = rarity
@@ -21,7 +23,7 @@ class Item:
 class Player:
     def __init__(self, level):
         self.level = level
-        self.hp = 25 + 5 * level
+        self.hp = 25 + 5 * min(level, 11)
         self.gold = 8 + 5 * level
         self.space = 10
         self.items = []
