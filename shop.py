@@ -32,6 +32,7 @@ class Player:
         self.reflect = 0
         self.poison = 0
         self.empower = 0
+        self.vampirism = 0
         self.received_damage = 0
 
     def add_item(self, item):

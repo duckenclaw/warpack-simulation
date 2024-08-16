@@ -15,6 +15,8 @@ def apply_effect(player, effect, stacks):
         player.empower += stacks
     elif effect == "Cleanse Poison":
         player.poison -= stacks
+    elif effect == "Vampirism":
+        player.vampirism += stacks
     elif effect == "Damage":
         player.received_damage = stacks
         if player.armor > 0 and player.armor > stacks:
@@ -67,7 +69,7 @@ def simulate_fight(player1, player2):
             if (item.activation == "On cooldown") and (time % item.cooldown == 0):
                 roll = random.randint(1, 100)
                 if roll <= item.chance:
-                    if item.effect in ["Armor", "Regeneration", "Reflect", "Empower", "Cleanse Poison"]:
+                    if item.effect in ["Armor", "Regeneration", "Reflect", "Empower", "Cleanse Poison", "Vampirism"]:
                         apply_effect(player1, item.effect, item.effect_stacks)
                         print(f"Player 1 received {item.effect}: {item.effect_stacks} from {item.name}")
                     elif item.effect in ["Damage"]:
@@ -83,7 +85,7 @@ def simulate_fight(player1, player2):
             if (item.activation == "On cooldown") and (time % item.cooldown == 0):
                 roll = random.randint(1, 100)
                 if roll <= item.chance:
-                    if item.effect in ["Armor", "Regeneration", "Reflect", "Empower", "Cleanse Poison"]:
+                    if item.effect in ["Armor", "Regeneration", "Reflect", "Empower", "Cleanse Poison", "Vampirism"]:
                         apply_effect(player2, item.effect, item.effect_stacks)
                         print(f"Player 2 received {item.effect}: {item.effect_stacks} from {item.name}")
                     elif item.effect in ["Damage"]:
@@ -95,7 +97,7 @@ def simulate_fight(player1, player2):
                 else:
                     print(f"{item.name} of Player 2 failed to work (Roll: {roll} > {item.chance})")
 
-        # On hit items
+        # On hit and On attack items
         if player1.received_damage > 0:
             for item in player1.items:
                 if item.activation == "On hit":
@@ -169,9 +171,13 @@ def simulate_fight(player1, player2):
             print(f"Player 1 wins!")
             return "Player 1"
 
-        time += 1
+        if player2.received_damage > 0 and player1.vampirism > 0:
+            player1.hp += min(player1.vampirism, player2.received_damage)
+        if player1.received_damage > 0 and player2.vampirism > 0:
+            player2.hp += min(player2.vampirism, player1.received_damage)
         player1.received_damage = 0
         player2.received_damage = 0
+        time += 1
 
 def run_simulation(level_player1, level_player2, num_simulations=100):
     item_stats = {item.name: {"wins": 0, "losses": 0} for item in item_database}

@@ -390,5 +390,47 @@
         "space": 2,
         "cost": 10,
         "rarity": "Legendary"
+    },
+    {
+        "name": "Fang",
+        "category": "Effect Item",
+        "activation": "On start",
+        "effect": "Vampirism",
+        "effect_stacks": 1,
+        "cooldown": 0,
+        "chance": 100,
+        "width": 1,
+        "height": 1,
+        "space": 1,
+        "cost": 3,
+        "rarity": "Common"
+    },
+    {
+        "name": "Scarlet Cloak",
+        "category": "Effect Item",
+        "activation": "On attack",
+        "effect": "Vampirism",
+        "effect_stacks": 1,
+        "cooldown": 0,
+        "chance": 45,
+        "width": 2,
+        "height": 2,
+        "space": 4,
+        "cost": 6,
+        "rarity": "Rare"
+    },
+    {
+        "name": "Dracula Grimoire",
+        "category": "Effect Item",
+        "activation": "On cooldown",
+        "effect": "Vampirism",
+        "effect_stacks": 2,
+        "cooldown": 8,
+        "chance": 65,
+        "width": 2,
+        "height": 1,
+        "space": 2,
+        "cost": 12,
+        "rarity": "Legendary"
     }
 ]
